@@ -1,14 +1,19 @@
-<!-- show all pictures -->
-<div class="container">
+<div class="row">
+<div class=" offset-s4 col 12">
 	<% @posts.reverse.each do |post| %>
-	<div>
-		<h3><%= post.user.username %></h3>
+
+	<div class="card hoverable row">
+		
+		<div class="picture_on_feed">
+			<img id="images" src="<%=post.image_url%>"/>
+		</div>
+		<div class="card-content">
+			<p><%= post.user.username %></p>
+			<p><%= post.caption %></p>
+
+		</div>
 	</div>
-	<div class="picture_on_feed">
-		<img src="<%=post.image_url%>"/>
-	</div>
-	<div>
-		<p><%= post.caption %></p>
-	</div>
+
 	<% end %> 
+</div>
 </div>
