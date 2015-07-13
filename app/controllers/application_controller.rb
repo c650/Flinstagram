@@ -69,7 +69,6 @@ class ApplicationController < Sinatra::Base
 	end
 
 
-
 ######HELPER METHODS######
 	def current_user
 	    if logged_in?
