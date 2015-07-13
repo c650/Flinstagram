@@ -1,0 +1,14 @@
+<!-- show all pictures -->
+<div class="container">
+	<% @posts.reverse.each do |post| %>
+	<div>
+		<h3><%= post.user.username %></h3>
+	</div>
+	<div class="picture_on_feed">
+		<img src="<%=post.image_url%>"/>
+	</div>
+	<div>
+		<p><%= post.caption %></p>
+	</div>
+	<% end %> 
+</div>
