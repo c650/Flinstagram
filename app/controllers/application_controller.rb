@@ -6,11 +6,6 @@ require "sinatra/base"
 
 class ApplicationController < Sinatra::Base
 
-<<<<<<< HEAD
-# register Sinatra::Flash
-=======
->>>>>>> 163ffaf171747be9499daea58e1ec46608872ce4
-
 	configure do
 		set :public_folder, 'public'
 		set :views, 'app/views'
@@ -46,6 +41,23 @@ class ApplicationController < Sinatra::Base
 	    session[:user_id] = nil
 	    redirect '/login'
     end
+
+######NEW POST######
+	get '/new_post' do
+		if logged_in?
+			erb :new_post
+		else
+			redirect to '/login'
+		end
+	end
+
+	post '/new_post' do
+		if params[:caption] == nil
+			params[:caption] = ''
+		end
+		Post.new(image_url: params[:image_url], user_id: session[:user_id], caption: params[:caption])
+	end
+
 ######NEW USER######
 	get '/new_user' do
 		erb :new_user
@@ -55,6 +67,9 @@ class ApplicationController < Sinatra::Base
 		User.create(username: params[:username])
 		redirect to '/'
 	end
+
+
+
 ######HELPER METHODS######
 	def current_user
 	    if logged_in?
