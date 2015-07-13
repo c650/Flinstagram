@@ -41,6 +41,7 @@ class ApplicationController < Sinatra::Base
 	    session[:user_id] = nil
 	    redirect '/login'
     end
+
 ######NEW POST######
 	get '/new_post' do
 		if logged_in?
@@ -56,6 +57,7 @@ class ApplicationController < Sinatra::Base
 		end
 		Post.new(image_url: params[:image_url], user_id: session[:user_id], caption: params[:caption])
 	end
+
 ######NEW USER######
 	get '/new_user' do
 		erb :new_user
@@ -65,6 +67,7 @@ class ApplicationController < Sinatra::Base
 		User.create(username: params[:username])
 		redirect to '/login'
 	end
+
 ######HELPER METHODS######
 	def current_user
 	    if logged_in?
@@ -77,4 +80,5 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       session[:user_id]
     end
+
 end
