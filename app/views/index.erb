@@ -1,0 +1,17 @@
+<form action="/new_post" method="POST">
+	<input placeholder="Image URL" id="image_url" type="text" name="image_url"><br>
+	<input type="text" name="caption" placeholder>
+	<input type="submit" value="Submit">
+</form>
+
+
+	<% @posts.reverse.each do |post| %>
+		<div>
+			<%= post.user.username %>
+		</div>
+		<div>
+			<img src="<%= post.image_url %>">
+			<%= post.caption %>
+		</div>
+
+	<%= end %>

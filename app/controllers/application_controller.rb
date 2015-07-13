@@ -6,7 +6,6 @@ require "sinatra/base"
 
 class ApplicationController < Sinatra::Base
 
-register Sinatra::Flash
 
 	configure do
 		set :public_folder, 'public'
