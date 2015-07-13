@@ -55,7 +55,8 @@ class ApplicationController < Sinatra::Base
 		if params[:caption] == nil
 			params[:caption] = ''
 		end
-		Post.new(image_url: params[:image_url], user_id: session[:user_id], caption: params[:caption])
+		Post.create(image_url: params[:image_url], user_id: session[:user_id], caption: params[:caption])
+		redirect to '/'
 	end
 
 ######NEW USER######
@@ -67,7 +68,10 @@ class ApplicationController < Sinatra::Base
 		User.create(username: params[:username])
 		redirect to '/login'
 	end
-
+######USER PROFILE######
+	get '/:profile' do
+		@user = User.find(session[:user_id])
+	end
 ######HELPER METHODS######
 	def current_user
 	    if logged_in?
