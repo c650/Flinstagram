@@ -65,7 +65,7 @@ class ApplicationController < Sinatra::Base
 
 	post '/new_user' do
 		User.create(username: params[:username])
-		redirect to '/'
+		redirect to '/login'
 	end
 
 
