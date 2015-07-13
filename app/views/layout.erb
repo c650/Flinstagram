@@ -4,6 +4,14 @@
 	<title>Flinstagram</title>
 </head>
 <body>
-<%= yield %>
+	<nav>
+		<div>
+			<a href="/new_post">NEW POST</a>
+			<a href="/login">LOGIN</a>
+			<a href="/logout">LOGOUT</a>
+			<a href="/:profile">USER PROFILE</a>
+		</div>
+	</nav>
+	<%= yield %>
 </body>
 </html>
